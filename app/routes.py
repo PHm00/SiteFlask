@@ -11,3 +11,7 @@ def index():
 @app.route('/contato')
 def contato():
     return render_template('contato.html', titulo="Contato", nome="Pedro")
+
+@app.route('/ventiladores')
+def ventiladores():
+    return render_template('ventiladores.html', titulo="Contato", nome="Pedro")
