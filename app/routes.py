@@ -15,3 +15,13 @@ def contato():
 @app.route('/ventiladores')
 def ventiladores():
     return render_template('ventiladores.html', titulo="Contato", nome="Pedro")
+@app.route('/home')
+def base():
+    return render_template('base.html', titulo="Contato", nome="Pedro")
+@app.route('/login')
+def login():
+    return render_template('login.html', titulo="Comprar", nome="Pedro")
+
+@app.route('/cadastro')
+def cadastro():
+    return render_template('cadastro.html', titulo="Cadastro", nome="Pedro")
