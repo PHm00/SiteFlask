@@ -34,3 +34,9 @@ def ventilador2():
 @app.route('/ventilador3')
 def ventilador3():
     return render_template('indexVentila3.html', titulo="Ventilador2", nome="Pedro")
+@app.route('/ellonMusk')
+def ellonMusk():
+    return render_template('ElonMusk.html', titulo="ElonMusk", nome="Pedro")
+@app.route('/ellonMusk1')
+def ellonMusk1():
+    return render_template('EllonMusko.html', titulo="ElonMusk", nome="Pedro")
