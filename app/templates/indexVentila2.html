@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<img src="{{url_for('static',filename='imagens/ventilador2.png')}}" width="400" height="400" class="rounded mx-auto d-block" alt="...">
+
+  <div class="container text-center" style="margin-top: 20vh;">
+    <h1>por apenas: <br>
+        R$ 1.700,00</h1><br><br>
+    <div>
+        <h5>Tipo: Ventilador de Parede, Qualitas<br>
+        Turbo Oscilante<br>
+        dAlta Vazão Industrial <br>
+            110V 220V Monofasico 220V 380V Trifasico (110, Volts)</h5>
+    </div><br><br>
+       <div class="d-grid gap-2 col-6 mx-auto">
+          <a href="/contato" class="btn btn-outline-secondary">Obter</a>
+       </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <a href="/ventiladores" class="btn btn-outline-secondary">Voltar</a>
+        </div>
+  </div>
+{% endblock %}

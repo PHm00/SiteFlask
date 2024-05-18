@@ -25,3 +25,12 @@ def login():
 @app.route('/cadastro')
 def cadastro():
     return render_template('cadastro.html', titulo="Cadastro", nome="Pedro")
+@app.route('/ventilador1')
+def ventilador1():
+    return render_template('indexVentila1.html', titulo="Ventilador1", nome="Pedro")
+@app.route('/ventilador2')
+def ventilador2():
+    return render_template('indexVentila2.html', titulo="Ventilador2", nome="Pedro")
+@app.route('/ventilador3')
+def ventilador3():
+    return render_template('indexVentila3.html', titulo="Ventilador2", nome="Pedro")

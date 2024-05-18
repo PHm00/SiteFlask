@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<img src="{{url_for('static',filename='imagens/ventilador4.png')}}" width="400" height="400" class="rounded mx-auto d-block" alt="...">
+
+  <div class="container text-center" style="margin-top: 20vh;">
+    <h1>por apenas: <br>
+        R$ 359,00</h1><br><br>
+    <div>
+        <h5>Tipo: WAP Ventilador de Parede Profissional<br>
+        Rajada PRO 60 <br>
+        Preto 55CM <br>
+            135W Bivolt</h5>
+    </div><br><br>
+       <div class="d-grid gap-2 col-6 mx-auto">
+          <a href="/contato" class="btn btn-outline-secondary">Obter</a>
+       </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <a href="/ventiladores" class="btn btn-outline-secondary">Voltar</a>
+        </div>
+  </div>
+{% endblock %}
