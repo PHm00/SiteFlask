@@ -1,7 +1,10 @@
 from app import app
 from flask import render_template
 from flask import request
+import json
+import requests
 
+link = "https://pedroflaskti18n-default-rtdb.firebaseio.com/" #conectar banco de dados
 @app.route('/')#configurando uma rotaWeb
 @app.route('/index')
 def index():
@@ -40,3 +43,58 @@ def ellonMusk():
 @app.route('/ellonMusk1')
 def ellonMusk1():
     return render_template('EllonMusko.html', titulo="ElonMusk", nome="Pedro")
+@app.route('/cadastrarUsuario', methods=['POST'])
+def cadastrarUsuario():
+    try:
+        cpf     = request.form.get("cpf")
+        nome    = request.form.get("nome")
+        telefone = request.form.get("telefone")
+        endereco = request.form.get("endereco")
+        dados    = {"cpf":cpf,"nome":nome,"telefone":telefone,"endereco":endereco}
+        requisicao = requests.post(f'{link}/cadastrar/.json', data=json.dumps(dados))
+        return 'cadastrado com sucesso'
+
+    except Exception as e:
+        return f'Ocorreu um erro\n\n + {e}'
+
+@app.route('/listar')
+def listarTudo():
+        try:
+            requisicao = requests.get(f'{link}/cadastrar/.json')
+            dicionario = requisicao.json()
+            return dicionario
+        except Exception as e:
+            return f' Ocorreu um erro\n\n + {e}'
+@app.route('/listarIndividual')
+def listarIndividual():
+    try:
+        requisicao = requests.get(f'{link}/cadastrar/.json')
+        dicionario = requisicao.json()
+        idCadastro = ""
+        usuario = ""
+        for codigo in dicionario:
+            usuario = dicionario[codigo]['telefone']
+            if usuario == "123":
+                idCadastro = codigo
+
+        return idCadastro
+    except Exception as e:
+        return f'Algo deu errado!\n\n + {e}'
+@app.route('/atualizar')
+def atualizar():
+    try:
+        dados = {"nome":"Nayara"}#Parametro
+        requisicao = requests.patch(f'{link}/cadastrar/-NySNCQ9tmLdQW9tlUpg/.json', data=json.dumps(dados))
+        return "Atualizado com sucesso!"
+
+    except Exception as e:
+        return f'Houve um erro!\n\n + {e}'
+@app.route('/excluir')
+def excluir():
+    try:
+        requisicao = requests.delete(f'{link}/cadastrar/-NySNCQ9tmLdQW9tlUpg/.json')
+        return "Excluído com sucesso"
+
+    except Exception as e:
+        return f'Houve um erro!\n\n + {e}'
+
