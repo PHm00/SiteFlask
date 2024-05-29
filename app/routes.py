@@ -3,6 +3,8 @@ from flask import render_template
 from flask import request
 import json
 import requests
+from flask import session
+
 
 link = "https://pedroflaskti18n-default-rtdb.firebaseio.com/" #conectar banco de dados
 @app.route('/')#configurando uma rotaWeb
@@ -97,4 +99,28 @@ def excluir():
 
     except Exception as e:
         return f'Houve um erro!\n\n + {e}'
+@app.route('/adm')
+def adm():
+    return render_template('adm.html', titulo="login Dev", nome="Pedro")
+
+USUARIO_ADM = "Pedro"
+SENHA_ADM = "1234"
+@app.route('/loginAdm', methods=['GET', 'POST'])
+def loginAdm():
+    if request.method == 'POST':
+        try:
+            usuario = request.form.get("usuario")
+            senha = request.form.get("senha")
+            # Verifica se o usuário e senha correspondem ao ADM
+            if usuario == USUARIO_ADM and senha == SENHA_ADM:
+                session['logged_in'] = True  # Define a sessão como logada
+                return 'Login bem-sucedido! Você agora tem acesso ao CRUD.'
+            else:
+                return 'Usuário ou senha incorretos.'
+        except Exception as e:
+            return f'Ocorreu um erro\n\n + {e}'
+    return render_template('loginAdm.html', titulo="Login ADM", nome="Pedro")
+
+
+
 
